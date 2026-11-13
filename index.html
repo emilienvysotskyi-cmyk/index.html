@@ -7,13 +7,11 @@
     const params = new URLSearchParams(window.location.search);
     const user = (window.Telegram?.WebApp?.initDataUnsafe?.start_param) || params.get('startapp') || params.get('u');
     if (user) {
-      const link = `https://t.me/${user}?gift`;
       if (window.Telegram && Telegram.WebApp) {
         Telegram.WebApp.ready();
-        Telegram.WebApp.openTelegramLink(link);
-        setTimeout(() => Telegram.WebApp.close(), 200);
+        Telegram.WebApp.openTelegramLink(`https://t.me/${user}?profile`);
       } else {
-        window.location.replace(link);
+        window.location.replace(`https://t.me/${user}?profile`);
       }
     }
   </script>
